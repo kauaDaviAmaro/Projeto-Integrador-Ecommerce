@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Contato{% endblock %}
+
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <div class="contact-form-container">
+        <div class="contact-intro">
+            <h1>Fale conosco</h1>
+            <p>
+                Se tiver alguma dúviva, sugestão ou apenas quiser conversar
+                sobre um assunto, não hesite em entrar em contato conosco.
+            </p>
+            <div class="messages">
+                <div class="message">
+                    <h3>Atenção!</h3>
+                    <p>
+                        Nos respondemos mensagens em ate 24 horas.
+                    </p>
+                </div>
+                <div class="message">
+                    <h3>Queremos saber mais</h3>
+                    <p>
+                        Se tiver alguma pergunta ou sugestão, basta
+                        preencher o formulário abaixo.
+                    </p>
+                </div>
+                <div class="message">
+                    <h3>Obrigado!</h3>
+                    <p>
+                        Estamos ansiosos para conversar com vocé.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <form novalidate class="contact-form" action="{% url 'contact' %}" method="post">
+            {% csrf_token %}
+            <h2>Envie sua mensagem</h2>
+            <div class="input-container">
+                <label for="name">Nome:</label>
+                <input class="validable" type="text" id="name" name="name" pattern=".{2,}" title="No mínimo 2 caracteres" maxlength="255" required>
+            </div>
+            <div class="input-container">
+                <label for="email">Email:</label>
+                <input class="validable" type="email" id="email" name="email" title="Insira um email válido" maxlength="255" required>
+            </div>
+            <div class="input-container">
+                <label for="message">Mensagem:</label>
+                <textarea class="validable" id="message" name="message" rows="4" cols="50" pattern=".{2,}" required title="Insira sua mensagem"></textarea>
+            </div>
+            <div class="input-container">
+                <input class="validable" type="submit" value="Enviar">
+            </div>
+        </form>
+    </div>
+{% endblock %}

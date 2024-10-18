@@ -1,0 +1,59 @@
+@import 'config.css';
+@import 'navbar.css';
+@import 'footer.css';
+
+body {
+    background: radial-gradient(circle at 30% 30%, #1F3BFF, #6C38FF, #D359FF);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+main {
+    min-height: calc(100vh - 64px);
+}
+
+.toast {
+    z-index: 9999;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.toast .toast-close {
+    color: white;
+    font-size: 25px;
+    justify-content: center;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.toast.success {
+    background: #34C759;
+}
+
+.toast.error {
+    background: #FF3737;
+}
+
+.badge {
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 15px;
+    color: white;
+    font-size: 0.8em;
+}
+
+.badge.success {
+    background: #34C759;
+}

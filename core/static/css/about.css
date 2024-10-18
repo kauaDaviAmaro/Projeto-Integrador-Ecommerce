@@ -1,0 +1,22 @@
+.about-container {
+    padding: 100px 2rem;
+    color: white;
+}
+
+.about-container p {
+    margin-top: 10px;
+    font-size: 1.2em;
+    max-width: 70%;
+}
+
+@media screen and (max-width: 768px) {
+    .about-container {
+        padding: 100px 2rem;
+        color: white;
+    }
+
+    .about-container p {    
+        max-width: 100%;
+        text-align: justify;
+    }
+}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Página Inícial
+{% endblock %}
+
+{% load static %}
+
+{% block style %}
+  <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <section class="hero">
+    <div class="hero-content">
+      <div class="subtitle">Bem-vindo</div>
+      <h1>Dipirona eventos</h1>
+      <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec sollicitudin arcu. Fusce sed imperdiet lectus, nec convallis turpis.</div>
+      <button class="button">Saiba mais</button>
+    </div>
+    <div class="hero-image">
+      <img src="{% static 'img/hero.png' %}" alt="Produto Demonstrativo" />
+    </div>
+  </section>
+  <section>
+    
+  </section>
+{% endblock %}

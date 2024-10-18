@@ -1,0 +1,67 @@
+.productDetail {
+    padding-top: 64px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.productDetail .title {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.productDetail .title h1 {
+    font-size: 3em;
+    color: white;
+}
+
+.productDetail .price {
+    margin-bottom: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.attribute {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.attribute .attribute-name {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: white;
+    margin-top: 10px;
+}
+
+.attribute .values {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.attribute .values input[type="radio"] {
+    display: none;
+}
+
+.attribute .values label {
+    font-size: 1em;
+    display: flex;
+    padding: 10px 20px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    background-color: white;
+    color: #000;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.attribute .values input[type="radio"]:checked + label {
+    background-color: #000;
+    color: white;
+}
+
+.attribute .values label:hover {
+    background-color: #000;
+    color: white;
+}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Produtos
+{% endblock %}
+
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/productList.css' %}" />
+{% endblock %}
+
+{% block content %}
+<section class="product-list">
+  {% if products %}
+  <div class="card-wrapper">
+    {% for product in products %}
+    <a href="{% url 'product_detail' product.id %}">
+      <div class="product-card">
+        <div class="card-image">
+          <img src="/media/{{ product.image }}" />
+        </div>
+        <h2>{{ product.name }}</h2>
+        <p>R$ {{ product.price | floatformat:2 }}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>Nenhum produto encontrado.</p>
+  {% endif %}
+</section>
+{% endblock %}

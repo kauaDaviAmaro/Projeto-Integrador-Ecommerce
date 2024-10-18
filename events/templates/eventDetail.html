@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{ event.name }} - Detalhes
+{% endblock %}
+
+{% load static %}
+{% block style %}
+  <link rel="stylesheet" href="{% static 'css/eventsDetail.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <div class="event-detail">
+    <h1>{{ event.name }}</h1>
+    <p>{{ event.description }}</p>
+    <p>Data: {{ event.date }}</p>
+    <p>Horario: {{ event.time }}</p>
+  </div>
+{% endblock %}  
+

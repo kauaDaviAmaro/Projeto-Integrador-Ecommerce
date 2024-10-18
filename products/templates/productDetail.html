@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/productDetail.css' %}" />
+{% endblock %}
+
+{% block title %}
+{{ product.name }} - Detalhes
+{% endblock %}
+
+{% block content %}
+<div class="productDetail">
+  <div class="image">
+    <img src="{{ product.image.url }}" alt="">
+  </div>
+  <div class="info">
+    <div class="title">
+      <h1>{{ product.name }}</h1> <span class="badge success quantity">Em estoque: {{ product.quantity }}</span>
+    </div>
+    <span class="price">R$ {{ product.price | floatformat:2 }}</span>
+    <div class="description">
+      <p>{{ product.description }}</p>
+    </div>
+
+    <h2>Selecione Atributos</h2>
+    <form class="attributes" method="POST">
+      {% csrf_token %}
+      {% for attribute_name, values in attributes.items %}
+      <div class="attribute">
+        <label class="attribute-name" for="{{ attribute_name }}">{{ attribute_name }}:</label>
+        <div class="values">
+          {% for value in values %}
+          <input type="radio" class="radio" id="{{ attribute_name }}-{{ value }}" name="{{ attribute_name }}"
+            value="{{ value }}">
+          <label class="attribute-value" for="{{ attribute_name }}-{{ value }}">
+            {{ value }}
+          </label>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </form>
+
+
+    <div class="add-to-cart">
+      <button type="submit">Adicionar ao Carrinho</button>
+    </div>
+  </div>
+</div>
+<!-- <img src="{{ product.image.url }}" alt="">
+<h1>{{ product.name }}</h1>
+<p>Preço: R$ {{ product.price }}</p>
+<p>Descrição: {{ product.description }}</p>
+<p>Quantidade disponível: {{ product.quantity }}</p>
+
+<h2>Selecione Atributos</h2>
+<form method="POST">
+    {% csrf_token %}
+    {% for attribute_name, values in attributes.items %}
+        <div>
+            <label>{{ attribute_name }}</label><br>
+            {% for value in values %}
+                <label>
+                    <input type="radio" name="{{ attribute_name }}" value="{{ value }}">
+                    {{ value }}
+                </label><br>
+            {% endfor %}
+        </div>
+    {% endfor %}
+    <button type="submit">Adicionar ao Carrinho</button>
+</form> -->
+{% endblock %}
