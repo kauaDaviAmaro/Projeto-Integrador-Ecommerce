@@ -18,7 +18,7 @@ Para configurar o ambiente de desenvolvimento do projeto, siga os passos abaixo:
 1. **Clone o repositório do projeto:**
 
    ```bash
-   git clone https://github.com/kauaDaviAmaro/project_pi.git
+   git clone https://github.com/kauaDaviAmaro/Projeto-Integrador-Ecommerce
    ```
 
 2. **Instale as dependências:**
