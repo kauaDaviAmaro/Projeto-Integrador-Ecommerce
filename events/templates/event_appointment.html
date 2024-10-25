@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Escolha a Data para "{{ event.name }}"
+{% endblock %}
+
+{% block content %}
+  <div class="date-selection">
+    <h1>Escolha a Data para "{{ event.name }}"</h1>
+
+    <div class="calendar">
+      <ul>
+        {% for date in dates_available %}
+          <li>
+            <a href="{% url 'register_event' event.id date %}">{{ date }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    {% if not dates_available %}
+      <p>Não há datas disponíveis para agendamento.</p>
+    {% endif %}
+  </div>
+{% endblock %}

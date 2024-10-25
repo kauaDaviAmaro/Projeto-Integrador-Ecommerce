@@ -1,20 +1,24 @@
 {% extends 'base.html' %}
 
 {% block title %}
-  {{ event.name }} - Detalhes
+Detalhes do Evento: {{ event.nome }}
 {% endblock %}
 
 {% load static %}
 {% block style %}
-  <link rel="stylesheet" href="{% static 'css/eventsDetail.css' %}" />
+<link rel="stylesheet" href="{% static 'css/event_detail.css' %}" />
 {% endblock %}
 
 {% block content %}
-  <div class="event-detail">
-    <h1>{{ event.name }}</h1>
-    <p>{{ event.description }}</p>
-    <p>Data: {{ event.date }}</p>
-    <p>Horario: {{ event.time }}</p>
-  </div>
-{% endblock %}  
+<div class="event-detail">
+  <h1>{{ event.nome }}</h1>
+  <p><strong>Descrição:</strong> {{ event.description }}</p>
+  <p><strong>Duração:</strong> {{ event.duration }}</p>
+  <p><strong>Preço:</strong> R$ {{ event.price }}</p>
 
+  <div class="actions">
+    <a href="{% url 'event_appointment' event.id %}" class="btn-agendar">Agendar Evento</a>
+    <a href="{% url 'event_list' %}" class="btn-voltar">Voltar para a Lista de Eventos</a>
+  </div>
+</div>
+{% endblock %}
