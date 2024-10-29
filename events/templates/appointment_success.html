@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Agendamento Realizado com Sucesso{% endblock %}
+
+{% block content %}
+  <section class="appointment-success">
+    <h1>Agendamento Realizado com Sucesso</h1>
+    <p>Parabéns! Seu agendamento foi realizado com sucesso. Em breve, entraremos em contato com voc  para confirmar os detalhes.</p>
+    <a href="{% url 'event_list' %}" class="btn-voltar">Voltar para a Lista de Eventos</a>
+  </section>
+{% endblock %}

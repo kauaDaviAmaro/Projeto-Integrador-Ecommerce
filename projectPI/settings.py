@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'products',
-    'users',
     'events'
 ]
 
@@ -62,8 +61,7 @@ TEMPLATES = [
         'DIRS': [
             'core/templates',
             'products/templates',
-            'users/templates',
-            'events/templates',
+            'events/templates'
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -87,8 +85,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'projectpi',
-        'USER': 'root',
-        'PASSWORD': '',
+        'USER': 'admin',
+        'PASSWORD': 'admin',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -134,7 +132,6 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     'core/static',
     'products/static',
-    'users/static',
     'events/static',
     'uploads',
 ]

@@ -48,3 +48,29 @@ def register(request, event_id):
         'event': event,
         'dates_available': dates_available
     })
+
+def register_appointment(request, event_id, date):
+    '''
+    User information is collected here
+    '''
+
+    if request.method == 'POST':
+        name = request.POST.get('user_name')
+        email = request.POST.get('user_email')
+        phone = request.POST.get('user_phone')
+        notes = request.POST.get('notes')
+
+        appointment = Appointment(
+            event_id=event_id,
+            date_time=date,
+            user_name=name,
+            user_email=email,
+            user_phone=phone,
+            notes=notes
+        )
+        appointment.save()
+
+        return render(request, 'appointment_success.html')
+    
+    template = 'appointment.html'
+    return render(request, template)

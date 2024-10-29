@@ -12,7 +12,7 @@
       <ul>
         {% for date in dates_available %}
           <li>
-            <a href="{% url 'register_event' event.id date %}">{{ date }}</a>
+            <a href="{% url 'register_appointment' event.id date %}">{{ date }}</a>
           </li>
         {% endfor %}
       </ul>
