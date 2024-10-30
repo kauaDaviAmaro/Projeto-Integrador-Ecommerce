@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-  Página Inícial
+Página Inícial
 {% endblock %}
 
 {% load static %}
@@ -15,14 +15,49 @@
     <div class="hero-content">
       <div class="subtitle">Bem-vindo</div>
       <h1>Dipirona eventos</h1>
-      <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec sollicitudin arcu. Fusce sed imperdiet lectus, nec convallis turpis.</div>
+      <div class="description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec sollicitudin arcu.
+        Fusce sed imperdiet lectus, nec convallis turpis.
+      </div>
       <button class="button">Saiba mais</button>
     </div>
     <div class="hero-image">
       <img src="{% static 'img/hero.png' %}" alt="Produto Demonstrativo" />
     </div>
   </section>
-  <section>
-    
+
+  <section class="products">
+    <div class="image">
+      <img src="https://placehold.co/600x400" alt="Evento ilustrativo">
+    </div>
+    <div class="content">
+      <div class="title">
+        Eventos
+      </div>
+      <div class="description">
+        Pequena descricao sobre eventos
+      </div>
+    </div>
+  </section>
+
+  <section class="events">
+    <div class="content">
+      <div class="title">
+        Eventos
+      </div>
+      <div class="description">
+        Pequena descricao sobre eventos
+      </div>
+    </div>
+    <div class="image">
+      <img src="https://placehold.co/600x400" alt="Evento ilustrativo">
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="title">
+      Entre em contato
+    </div>
+    <a class="btn" href="{% url 'contact' %}">Entre em contato</a>
   </section>
 {% endblock %}
