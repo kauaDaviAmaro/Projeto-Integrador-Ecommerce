@@ -1,0 +1,23 @@
+.appointment-success {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50% -50%);
+
+    padding: 10px;
+    border: 1px solid #8080808c;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+    background-color: white;
+
+}
+
+.appointment-success .btn-voltar {
+    text-decoration: none;
+    background-color: green;
+    color: white;
+    padding: 5px;
+    border-radius: 12px;
+}
