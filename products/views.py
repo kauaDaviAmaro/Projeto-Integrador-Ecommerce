@@ -24,3 +24,14 @@ def product_detail(request, product_id):
         'product': product,
         'attributes': attributes,
     })
+
+def product_design(request, product_id):
+    if request.method != 'POST':
+        raise Http404("Page not found")
+
+    product = get_object_or_404(Product, pk=product_id)
+
+    attributesSelected = {key: value for key, value in request.POST.items() if key != 'csrfmiddlewaretoken'}
+
+    template = "productDesign.html"
+    return render(request, template, {'product': product, 'attributesSelected': attributesSelected})

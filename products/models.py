@@ -18,7 +18,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to=product_image_file_path, null=True, blank=True)
 
     def __str__(self):
-        return f"{self.name} - ${self.price}"
+        return f"{self.name} - R${self.price:.2f}"
 
     class Meta:
         ordering = ['name']

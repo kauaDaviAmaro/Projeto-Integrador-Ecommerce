@@ -63,7 +63,7 @@ class Command(BaseCommand):
         # Criar produtos
         for _ in range(25):
             self.stdout.write(self.style.WARNING('Downloading image...'))
-            image_url = f'https://placehold.co/600x400/jpg?text={faker.word()}'
+            image_url = f'https://picsum.photos/200'
 
             response = requests.get(image_url)
             if response.status_code != 200:
@@ -76,7 +76,7 @@ class Command(BaseCommand):
             product = Product.objects.create(
                 name=faker.word(),
                 price=faker.random_int(min=1, max=10000), 
-                description=faker.sentence(),
+                description=faker.text(),
                 quantity=faker.random_int(min=0, max=100),
                 is_active=True,
             )

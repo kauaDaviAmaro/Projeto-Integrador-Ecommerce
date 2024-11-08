@@ -3,12 +3,12 @@
     background-size: cover;
     background-position: center;
 
-    padding: 8rem 4rem 24px 4rem;
+    padding: 12rem 4rem 24px 4rem;
 
     display: flex;
     justify-content: space-evenly;
     gap: 20px;
-    height: 100vh;
+    height: 90vh;
     color: white;
 
 }
@@ -52,4 +52,55 @@
 .hero button:hover {
     background-color: #6C38FF;
     color: white;
+}
+
+.products,
+.events {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+    padding: 64px 4rem;
+}
+
+.products .title,
+.events .title,
+.contact .title {
+    font-size: 2em;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+section {
+    color: white;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 64px 4rem;
+}
+
+.contact a {
+    padding: 8px 5rem;
+    font-size: 1.5em;
+    background: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+    border-radius: 10px;
+    transition: background 0.5s ease, color 0.5s ease;
+    color: white;
+
+}
+.contact .description {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    max-width: 500px;
+}
+
+.contact a:hover {
+    background: white;
+    max-width: 500px;
+    color: #AF40FF;
 }

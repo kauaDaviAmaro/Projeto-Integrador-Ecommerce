@@ -25,7 +25,7 @@
     </div>
 
     <h2>Selecione Atributos</h2>
-    <form class="attributes" method="POST">
+    <form class="attributes" method="POST" action="{% url 'product_design' product.id %}">
       {% csrf_token %}
       {% for attribute_name, values in attributes.items %}
       <div class="attribute">
@@ -33,7 +33,7 @@
         <div class="values">
           {% for value in values %}
           <input type="radio" class="radio" id="{{ attribute_name }}-{{ value }}" name="{{ attribute_name }}"
-            value="{{ value }}">
+            value="{{ value }}" required>
           <label class="attribute-value" for="{{ attribute_name }}-{{ value }}">
             {{ value }}
           </label>
@@ -41,34 +41,10 @@
         </div>
       </div>
       {% endfor %}
+      <div class="continue">
+        <button type="submit">Prosseguir com a compra</button>
+      </div>
     </form>
-
-
-    <div class="add-to-cart">
-      <button type="submit">Adicionar ao Carrinho</button>
-    </div>
   </div>
 </div>
-<!-- <img src="{{ product.image.url }}" alt="">
-<h1>{{ product.name }}</h1>
-<p>Preço: R$ {{ product.price }}</p>
-<p>Descrição: {{ product.description }}</p>
-<p>Quantidade disponível: {{ product.quantity }}</p>
-
-<h2>Selecione Atributos</h2>
-<form method="POST">
-    {% csrf_token %}
-    {% for attribute_name, values in attributes.items %}
-        <div>
-            <label>{{ attribute_name }}</label><br>
-            {% for value in values %}
-                <label>
-                    <input type="radio" name="{{ attribute_name }}" value="{{ value }}">
-                    {{ value }}
-                </label><br>
-            {% endfor %}
-        </div>
-    {% endfor %}
-    <button type="submit">Adicionar ao Carrinho</button>
-</form> -->
 {% endblock %}

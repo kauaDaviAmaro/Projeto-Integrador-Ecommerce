@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ product.name }} - Design
+{% endblock %}
+
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/productDesign.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="product-select">
+    <h1>{{ product.name }}</h1>
+
+    <div class="attributes">
+        {% for key, value in attributesSelected.items %}
+        <div class="attribute">
+            {{ key }}: {{ value }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="tabs">
+    <div class="tab active">Tenho meu design</div>
+    <div class="tab">Não tenho meu design</div>
+</div>
+
+<div class="tab-content">
+    <div class="tab-item active">
+        <!-- Upload image -->
+        <div class="design-image">
+            <div class="preview">
+
+            </div>
+            <form method="POST" action="{% url 'product_design' product.id %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- <input type="file" name="design" accept="image/*" required> -->
+                <div class="drop-area" id="drop-area">
+                    <p>Selecione uma imagem</p>
+                    <input type="file" name="design" id="fileElem" multiple accept="image/*" style="display:none;">
+                    <label for="fileElem" class="button">Selecionar</label>
+                </div>
+
+                <div class="buttons" style="display: none;">
+                    <button type="submit">Enviar</button>
+                    <button type="reset">Limpar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="tab-item">
+        <!-- Descreve o design -->
+        <form class="design-description" method="POST" action="{% url 'product_design' product.id %}">
+            {% csrf_token %}
+            <label for="description">
+                Escreva como voce deseja que o design seja feito:
+            </label>
+            <textarea name="description" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% load static %}
+{% block script %}
+<script defer src="{% static 'js/productDesign.js' %}"></script>
+{% endblock %}
