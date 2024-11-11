@@ -2,6 +2,7 @@
 
 {% block title %}Agendamento Realizado com Sucesso{% endblock %}
 
+{% load static %}
 {% block style %}
     <link rel="stylesheet" href="{% static 'css/success.css' %}" />
 {% endblock %}
@@ -9,7 +10,8 @@
 {% block content %}
   <section class="appointment-success">
     <h1>Agendamento Realizado com Sucesso</h1>
-    <p>Parabéns! Seu agendamento foi realizado com sucesso. Em breve, entraremos em contato com você para confirmar os detalhes.</p>
+    
+    <p>Parabéns! Seu agendamento foi realizado com sucesso. <br>Em breve, entraremos em contato com você para confirmar os detalhes.</p>
     <a href="{% url 'event_list' %}" class="btn-voltar">Voltar para a Lista de Eventos</a>
   </section>
 {% endblock %}

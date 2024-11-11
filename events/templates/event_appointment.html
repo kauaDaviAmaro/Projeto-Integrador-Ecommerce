@@ -1,25 +1,86 @@
 {% extends 'base.html' %}
 
 {% block title %}
-  Escolha a Data para "{{ event.name }}"
+Escolha a Data para "{{ event.name }}"
+{% endblock %}
+
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/event_appointment.css' %}" />
 {% endblock %}
 
 {% block content %}
-  <div class="date-selection">
-    <h1>Escolha a Data para "{{ event.name }}"</h1>
+<div class="date-selection">
+  <h1>Escolha a Data para "{{ event.name }}"</h1>
 
-    <div class="calendar">
-      <ul>
-        {% for date in dates_available %}
-          <li>
-            <a href="{% url 'register_appointment' event.id date %}">{{ date }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
+  <!-- Calendário FullCalendar -->
+  <div id="calendar"></div>
 
-    {% if not dates_available %}
-      <p>Não há datas disponíveis para agendamento.</p>
-    {% endif %}
-  </div>
+  {% if not available_dates %}
+  <p>Não há datas disponíveis para agendamento.</p>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block script %}
+<!-- Importa o FullCalendar -->
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"
+  integrity="sha256-ZztCtsADLKbUFK/X6nOYnJr0eelmV2X3dhLDB/JK6fM=" crossorigin="anonymous"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var calendarEl = document.getElementById('calendar');
+    const eventId = {{ event.id }};
+
+    // Função para buscar as datas disponíveis
+    function fetchAvailableDates(year, month) {
+      return fetch(`/events/available_dates/${eventId}/${year}/${month}/`)
+        .then(response => response.json())
+        .then(data => data.available_dates);
+    }
+
+    // Inicializa o calendário
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      locale: 'pt-br',
+      selectable: true,
+      selectOverlap: false,
+      showNonCurrentDates: false,  // Oculta dias de meses adjacentes
+
+      // Evento acionado ao carregar o calendário ou ao navegar para um novo mês
+      datesSet: async function (info) {
+        const year = info.start.getFullYear();
+        const month = info.start.getMonth() + 1;  // Mês é indexado a partir de zero, então somamos 1
+        const availableDates = await fetchAvailableDates(year, month);
+
+        // Limpa os eventos anteriores e adiciona apenas as datas disponíveis
+        calendar.removeAllEvents();
+        availableDates.forEach(date => {
+          calendar.addEvent({
+            title: 'Disponível',
+            start: date,
+            display: 'background',
+            url: `/events/${eventId}/appointment/${date}`, // Link para agendamento
+            backgroundColor: '#28a745',
+            borderColor: '#28a745',
+            
+          });
+        });
+      },
+
+      // Desabilita a seleção de datas não disponíveis
+      dateClick: function (info) {
+        const availableDates = calendar.getEvents().map(event => event.startStr);
+        if (!availableDates.includes(info.dateStr)) {
+          alert("Data indisponível para agendamento.");
+        } else {
+          window.location.href = `/events/${eventId}/appointment/${info.dateStr}`;
+        }
+      }
+    });
+
+    // Renderiza o calendário na página
+    calendar.render();
+  });
+</script>
 {% endblock %}

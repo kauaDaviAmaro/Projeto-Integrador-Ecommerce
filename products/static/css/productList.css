@@ -1,5 +1,17 @@
-.product-list {
+.banner {
     padding-top: 64px;
+
+    & img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+}
+
+.title {
+    margin: 20px 0;
+    text-align: center;
+    font-size: 3em;
 }
 
 .card-wrapper {
@@ -35,7 +47,7 @@
 
 .product-card:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    transform: scale(1.02); 
+    transform: scale(1.02);
 }
 
 .product-card .card-image {

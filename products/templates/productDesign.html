@@ -11,8 +11,9 @@
 
 {% block content %}
 <div class="product-select">
-    <h1>{{ product.name }}</h1>
+    <h1>Produto: {{ product.name }}</h1>
 
+    <h2>Atributos Selecionados:</h2>
     <div class="attributes">
         {% for key, value in attributesSelected.items %}
         <div class="attribute">
@@ -34,9 +35,12 @@
             <div class="preview">
 
             </div>
-            <form method="POST" action="{% url 'product_design' product.id %}" enctype="multipart/form-data">
+            <form class="design-form" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                <!-- <input type="file" name="design" accept="image/*" required> -->
+                <h2>Selecione uma imagem</h2>
+                <input type="hidden" name="attributes"
+                    value="{% for key, value in attributesSelected.items %}{{ key }}={{ value }}&{% endfor %}">
+                <input type="hidden" name="type" value="image">
                 <div class="drop-area" id="drop-area">
                     <p>Selecione uma imagem</p>
                     <input type="file" name="design" id="fileElem" multiple accept="image/*" style="display:none;">
@@ -44,23 +48,84 @@
                 </div>
 
                 <div class="buttons" style="display: none;">
-                    <button type="submit">Enviar</button>
+                    <div class="send" onclick="showModalUserInfo()" style="text-align: center;">Enviar</div>
                     <button type="reset">Limpar</button>
                 </div>
             </form>
         </div>
     </div>
     <div class="tab-item">
-        <!-- Descreve o design -->
-        <form class="design-description" method="POST" action="{% url 'product_design' product.id %}">
+        <form class="design-description novalidate" method="POST">
             {% csrf_token %}
-            <label for="description">
-                Escreva como voce deseja que o design seja feito:
-            </label>
-            <textarea name="description" required></textarea>
-            <button type="submit">Enviar</button>
+            <p>
+                Descreva como você deseja que o design seja feito,
+                por exemplo, cores, fontes, imagens, etc.
+            </p>
+            <input type="hidden" name="attributes"
+                value="{% for key, value in attributesSelected.items %}{{ key }}={{ value }}&{% endfor %}">
+            <input type="hidden" name="type" value="description">
+            <textarea name="description" required placeholder="Descreva o design"></textarea>
+            <div class="send" onclick="showModalUserInfo()" style="text-align: center;">Enviar</div>
         </form>
     </div>
+</div>
+
+<div class="userinfo novalidate">
+    <form class="userinfo-form" method="POST" action="{% url 'order_product' product.id %}">
+        <h2>Informações pessoais</h2>
+        {% csrf_token %}
+        <input type="hidden" name="product" value="{{ product.id }}">
+
+        <h3>Contato</h3>
+        <div class="form-input">
+            <div class="col">
+                <label for="name">Nome:</label>
+                <input type="text" name="name" id="name" placeholder="Nome" required>
+            </div>
+            <div class="col">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" placeholder="Email" required>
+            </div>
+        </div>
+        <div class="form-input">
+            <div class="col">
+                <label for="phone">Telefone:</label>
+                <input type="text" name="phone" id="phone" placeholder="Telefone" required>
+            </div>
+        </div>
+        <h3>Endereço</h3>
+        <div class="form-input">
+            <div class="col">
+                <label for="street">Rua:</label>
+                <input type="text" name="street" id="street" placeholder="Rua" required>
+            </div>
+            <div class="col">
+                <label for="number">Número:</label>
+                <input type="text" name="number" id="number" placeholder="Número" required>
+            </div>
+        </div>
+        <div class="form-input">
+            <div class="col">
+                <label for="district">Bairro:</label>
+                <input type="text" name="district" id="district" placeholder="Bairro" required>
+            </div>
+            <div class="col">
+                <label for="city">Cidade:</label>
+                <input type="text" name="city" id="city" placeholder="Cidade" required>
+            </div>
+        </div>
+        <div class="form-input">
+            <div class="col">
+                <label for="state">Estado:</label>
+                <input type="text" name="state" id="state" placeholder="Estado" required>
+            </div>
+            <div class="col">
+                <label for="zip_code">CEP:</label>
+                <input type="text" name="zip_code" id="zip_code" placeholder="CEP" required>
+            </div>
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
 </div>
 {% endblock %}
 

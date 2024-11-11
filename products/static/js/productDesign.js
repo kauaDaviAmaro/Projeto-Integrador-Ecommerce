@@ -42,11 +42,42 @@ document.querySelector("input[name='design']").addEventListener("change", (e) =>
     reader.readAsDataURL(e.target.files[0]);
 
     document.querySelector("#drop-area").style.display = 'none';
-    document.querySelector(".buttons").style.display = 'block';
+    document.querySelector(".buttons").style.display = 'flex';
 })
 
 document.querySelector("form").addEventListener("reset", () => {
     document.querySelector(".preview").innerHTML = "";
     document.querySelector(".buttons").style.display = 'none';
     document.querySelector("#drop-area").style.display = 'block';
+})
+
+const showModalUserInfo = () => {
+    const modal = document.querySelector(".userinfo");
+    modal.style.display = "flex";
+}
+
+document.querySelector(".userinfo").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const designDescription = new FormData(document.querySelector(".design-description"));
+    const designForm = new FormData(document.querySelector(".design-form"));
+    const userinfoForm = new FormData(document.querySelector(".userinfo form"));
+
+    for (const pair of designDescription.entries()) {
+        designForm.append(pair[0], pair[1]);
+    }
+    for (const pair of userinfoForm.entries()) {
+        designForm.append(pair[0], pair[1]);
+    }
+
+    fetch("/products/"+ userinfoForm.get("product") +"/order/", {
+        method: "POST",
+        body: designForm
+    }).then((res) => {
+        window.location.href = "/products/order_success/";
+    }).catch((err) => {
+        console.error(err);
+        alert("Erro ao enviar o design!");
+    }).finally(() => {
+        document.querySelector(".userinfo").style.display = "none";
+    });
 })

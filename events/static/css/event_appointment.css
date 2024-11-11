@@ -1,0 +1,14 @@
+#calendar {
+    margin: 0 auto;
+    max-width: 50vw;
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border: 1px solid #8080808c;
+    border-radius: 10px;
+}
+
+.date-selection {
+    padding-top: 64px;
+    text-align: center;
+}

@@ -26,20 +26,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form');
 
     form.addEventListener('submit', function (event) {
-        event.preventDefault();
-        const isValid = validateField(this);
+        if (!this.classList.contains('novalidate')) {
+            event.preventDefault();
+            const isValid = validateField(this);
 
-        if (isValid) {
-            this.submit();
+            if (isValid) {
+                this.submit();
+            }
         }
     });
 
     const requiredFields = form.querySelectorAll('[required]');
 
     requiredFields.forEach(field => {
-        const label = field.previousElementSibling;
-        if (label) {
-            label.insertAdjacentHTML('beforeend', ' <span style="color:red;">*</span>');
+        if (field.type !== 'radio') {
+            const label = field.previousElementSibling;
+            if (label) {
+                label.insertAdjacentHTML('beforeend', ' <span style="color:red;">*</span>');
+            }
         }
     });
 });

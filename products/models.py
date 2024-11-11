@@ -45,3 +45,25 @@ class ProductAttributeValue(models.Model):
 
     def __str__(self):
         return f"{self.product.name} - {self.attribute_value.attribute.name}: {self.attribute_value.value}"
+    
+
+
+class Order(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    atributesSelected = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='orders/', null=True, blank=True)
+    description = models.TextField()
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=254)
+    phone = models.CharField(max_length=15)
+    street = models.CharField(max_length=100)
+    number = models.CharField(max_length=10)
+    district = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    state = models.CharField(max_length=100)
+    zip_code = models.CharField(max_length=10)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Order #{self.pk} - Total: R${self.total_price:.2f}"

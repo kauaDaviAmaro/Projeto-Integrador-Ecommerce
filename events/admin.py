@@ -8,4 +8,7 @@ class EventAdmin(admin.ModelAdmin):
 
 @admin.register(Appointment)
 class AppointmentAdmin(admin.ModelAdmin):
-    list_display = ('user_name', 'event', 'date_time')
+    list_display = ('user_name', 'event_name', 'date_time')
+
+    def event_name(self, obj):
+        return obj.event.name

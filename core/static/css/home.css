@@ -57,9 +57,14 @@
 .products,
 .events {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     gap: 20px;
-    padding: 64px 4rem;
+    padding: 64px 10rem;
+    text-align: justify;
+}
+
+.events .description {
+    max-width: 600px;
 }
 
 .products .title,
@@ -74,6 +79,7 @@
 section {
     color: white;
 }
+
 
 .contact {
     display: flex;

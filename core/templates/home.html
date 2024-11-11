@@ -7,61 +7,78 @@ Página Inícial
 {% load static %}
 
 {% block style %}
-  <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
 {% endblock %}
 
 {% block content %}
-  <section class="hero">
-    <div class="hero-content">
-      <div class="subtitle">Bem-vindo</div>
-      <h1>Dipirona eventos</h1>
-      <div class="description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec sollicitudin arcu.
-        Fusce sed imperdiet lectus, nec convallis turpis.
-      </div>
-      <button class="button">Saiba mais</button>
+<section class="hero">
+  <div class="hero-content">
+    <div class="subtitle">Bem-vindo</div>
+    <h1>Dipirona eventos</h1>
+    <div class="description">
+      Dipirona cria eventos e produtos personalizados únicos, cuidando de cada detalhe para tornar sua experiência
+      inesquecível.
     </div>
-    <div class="hero-image">
-      <img src="{% static 'img/hero.png' %}" alt="Produto Demonstrativo" />
-    </div>
-  </section>
+    <button class="button">Saiba mais</button>
+  </div>
+  <div class="hero-image">
+    <img src="{% static 'img/hero.png' %}" alt="Produto Demonstrativo" />
+  </div>
+</section>
 
-  <section class="products">
-    <div class="image">
-      <img src="https://placehold.co/600x400" alt="Evento ilustrativo">
-    </div>
-    <div class="content">
-      <div class="title">
-        Eventos
-      </div>
-      <div class="description">
-        Pequena descricao sobre eventos
-      </div>
-    </div>
-  </section>
-
-  <section class="events">
-    <div class="content">
-      <div class="title">
-        Eventos
-      </div>
-      <div class="description">
-        Pequena descricao sobre eventos
-      </div>
-    </div>
-    <div class="image">
-      <img src="https://placehold.co/600x400" alt="Evento ilustrativo">
-    </div>
-  </section>
-
-  <section class="contact">
+<section class="products">
+  <div class="image" style="width: 50vw;">
+    <img src="https://placehold.co/600x400" alt="Evento ilustrativo">
+  </div>
+  <div class="content" style="width: 50vw;">
     <div class="title">
-      Entre em contato
+      Eventos
     </div>
     <div class="description">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec sollicitudin arcu.
-      Fusce sed imperdiet lectus, nec convallis turpis.
+      Na Dipirona, criamos eventos personalizados que vão além das expectativas! Seja uma festa corporativa, um
+      casamento ou uma celebração particular, nossa missão é fazer cada detalhe brilhar. Com uma equipe especializada e
+      apaixonada por criar momentos únicos, oferecemos soluções criativas e personalizadas, sempre atendendo aos mais
+      altos padrões de qualidade e inovação. <br> <br>
+
+      Dos elementos visuais ao entretenimento, cuidamos de tudo para que você aproveite cada instante sem preocupações.
+      Deixe a Dipirona transformar sua visão em realidade e crie memórias que serão lembradas por muito tempo. <br> <br>
+
+      Dipirona — onde o extraordinário é o padrão.
     </div>
-    <a class="btn" href="{% url 'contact' %}">Entre em contato</a>
-  </section>
+  </div>
+</section>
+
+<section class="events">
+  <div class="content">
+    <div class="title">
+      Eventos
+    </div>
+    <div class="description" style="width: 50vw;">
+      Na Dipirona, acreditamos que cada detalhe importa — e nossos produtos personalizados são feitos para trazer
+      autenticidade e exclusividade a cada momento. Oferecemos uma ampla variedade de itens, desde brindes para eventos
+      a presentes especiais, tudo personalizado para refletir a sua personalidade ou a identidade da sua marca. <br>
+      <br>
+
+      Com um processo simples e intuitivo, você pode fazer o upload do seu próprio design e personalizar nossos produtos
+      do seu jeito. De copos e camisetas a canecas e itens decorativos, nossos produtos são desenvolvidos com materiais
+      de alta qualidade e uma atenção cuidadosa aos detalhes. <br> <br>
+
+      Torne seus momentos únicos com os produtos personalizados da Dipirona!
+    </div>
+  </div>
+  <div class="image" style="width: 50vw; margin-left: 130px;">
+    <img src="https://placehold.co/600x400" alt="Evento ilustrativo">
+  </div>
+</section>
+
+<section class="contact">
+  <div class="title">
+    Entre em contato
+  </div>
+  <div class="description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec sollicitudin arcu.
+    Fusce sed imperdiet lectus, nec convallis turpis.
+  </div>
+  <a class="btn" href="{% url 'contact' %}">Entre em contato</a>
+</section>
 {% endblock %}

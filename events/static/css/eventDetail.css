@@ -1,0 +1,63 @@
+.event-detail-wrapper {
+    display: flex;
+}
+
+.event-detail {
+    padding-top: 64px;
+    margin: 0 auto;
+    max-width: 80vw;
+}
+
+.content {
+    padding: 0 20px;
+    position: relative;
+    max-width: 50%;
+}
+
+
+.price {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.description {
+    margin-bottom: 20px;
+    padding-top: 10px;
+}
+
+.duration {
+    margin: 20px 0;
+}
+
+.number {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.actions {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    display: flex;
+    gap: 20px;
+}
+
+.actions a {
+    text-decoration: none;
+    color: white;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.actions .btn-agendar {
+    background-color: #34C759;
+}
+
+.actions .btn-voltar {
+    background-color: #e74c3c;
+}

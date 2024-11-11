@@ -6,19 +6,34 @@ Detalhes do Evento: {{ event.nome }}
 
 {% load static %}
 {% block style %}
-<link rel="stylesheet" href="{% static 'css/event_detail.css' %}" />
+<link rel="stylesheet" href="{% static 'css/eventDetail.css' %}" />
 {% endblock %}
 
 {% block content %}
 <div class="event-detail">
-  <h1>{{ event.nome }}</h1>
-  <p><strong>Descrição:</strong> {{ event.description }}</p>
-  <p><strong>Duração:</strong> {{ event.duration }}</p>
-  <p><strong>Preço:</strong> R$ {{ event.price }}</p>
-
-  <div class="actions">
-    <a href="{% url 'event_appointment' event.id %}" class="btn-agendar">Agendar Evento</a>
-    <a href="{% url 'event_list' %}" class="btn-voltar">Voltar para a Lista de Eventos</a>
+  <h1>{{ event.name }}</h1>
+  <div class="event-detail-wrapper">
+    <div class="image">
+      <img src="/media/{{ event.imagem }}" alt="Evento" />
+    </div>
+    <div class="content">
+      <h2 class="description">Descrição</h2>
+      <p>{{ event.description }}</p>
+      <p style="margin-top: 20px;">
+        <strong>Atenção!</strong>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum nobis, recusandae illum vero itaque possimus
+        veniam ut? Totam tenetur, odit culpa, consequatur modi ut dolore in officia, veniam maiores excepturi.
+      </p>
+      <h2 class="duration">Duração</h2>
+      <p class="number">{{ event.hours }} horas {% if event.minutes %}e {{ event.minutes }} minutos{% endif %}</p>
+      <div class="price">
+        <p>Por R$ {{ event.price }}</p>
+      </div>
+      <div class="actions">
+        <a href="{% url 'event_list' %}" class="btn-voltar">Voltar para a Lista de Eventos</a>
+        <a href="{% url 'event_appointment' event.id %}" class="btn-agendar">Agendar Evento</a>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}

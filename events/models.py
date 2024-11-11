@@ -6,6 +6,7 @@ class Event(models.Model):
     description = models.TextField()
     price = models.FloatField()
     duration = models.DurationField()
+    imagem = models.ImageField(upload_to='events/', null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
 
 

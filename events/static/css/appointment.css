@@ -1,0 +1,42 @@
+form {
+    max-width: 50vw;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border: 1px solid #8080808c;
+    border-radius: 10px;
+
+    margin: 0 auto;
+}
+
+.appointment-container {
+    padding-top: 100px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #8080808c;
+}
+
+form button {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.description {
+    margin-bottom: 20px;
+    padding-top: 10px;
+    color: #808080;
+}

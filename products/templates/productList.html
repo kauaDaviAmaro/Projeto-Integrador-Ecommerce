@@ -10,6 +10,12 @@ Produtos
 {% endblock %}
 
 {% block content %}
+<div class="banner">
+  <img src="{% static 'images/bannerProduto.jpeg' %}" alt="Banner de eventos">
+</div>
+<h1 class="title">
+  Produtos Disponíveis
+</h1>
 <section class="product-list">
   {% if products %}
   <div class="card-wrapper">
