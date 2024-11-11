@@ -43,15 +43,16 @@
             <h2>Envie sua mensagem</h2>
             <div class="input-container">
                 <label for="name">Nome:</label>
-                <input class="validable" type="text" id="name" name="name" pattern=".{2,}" title="No mínimo 2 caracteres" maxlength="255" required>
+                <input class="validable" type="text" id="name" name="name" pattern=".{2,}" title="No mínimo 2 caracteres" maxlength="255" value="Nome" required>
             </div>
             <div class="input-container">
                 <label for="email">Email:</label>
-                <input class="validable" type="email" id="email" name="email" title="Insira um email válido" maxlength="255" required>
+                <input class="validable" type="email" id="email" name="email" title="Insira um email válido" maxlength="255" value="Email" required>
             </div>
             <div class="input-container">
                 <label for="message">Mensagem:</label>
-                <textarea class="validable" id="message" name="message" rows="4" cols="50" pattern=".{2,}" required title="Insira sua mensagem"></textarea>
+                <textarea class="validable" id="message" name="message" rows="4" cols="50" pattern=".{2,}" required title="Insira sua mensagem">Mensagem
+                </textarea>
             </div>
             <div class="input-container">
                 <input class="validable" type="submit" value="Enviar">
